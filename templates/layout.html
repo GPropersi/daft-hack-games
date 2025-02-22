@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <title>My Webpage</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
-	<div>
+	<div class="outer-panel">
 	{% include 'user_stats.html' %}
 	</div>
-	<div>
+	<div class="inner-panel">
 	{% include 'timer_column.html' %}
 	</div>
-	<div>
+	<div class="outer-panel">
 	{% include 'global_leaderboard.html' %}
 	</div>
 </body>
