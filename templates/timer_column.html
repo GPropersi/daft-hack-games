@@ -1,0 +1,65 @@
+<div class="main-box">
+    <h2 class="task-txt">POMODORO SHOWDOWN</h2>
+    <div class="timer-box"> 
+        <div class="timer" id="timer"></div>
+        <button id="start-timer" class="toggle-btn">Start Timer</button>
+    </div>
+    <h2 class="task-txt">TASKS</h2>
+    <div>
+        <ul id="taskList">
+            {% for task in tasks %}
+                <li>
+                    <button class="task-btn" data-task="{{ task }}">{{ task }}</button> 
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<script>
+    let countdown;
+    const timerDisplay = document.getElementById("timer"); 
+    const startButton = document.getElementById("start-timer"); 
+    const totalTime = 25 * 60; 
+    let timeLeft = totalTime; 
+
+    // Function to update the timer display
+    function updateDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerDisplay.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`; // Format display
+    }
+
+    // Handle task button clicks
+    document.querySelectorAll('.task-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            currentTask = this.getAttribute('data-task'); // Get the task name
+            console.log(`Task selected: ${currentTask}`);
+            startButton.disabled = false; // Enable the start button
+        });
+    });
+
+    // Start Timer Functionality
+    startButton.addEventListener("click", function() {
+        clearInterval(countdown); // Clear any existing timer
+        timeLeft = totalTime; 
+        updateDisplay(); 
+
+        startButton.disabled = true; // Disable the button to prevent multiple starts
+
+        countdown = setInterval(function() {
+            timeLeft--; 
+
+            if (timeLeft < 0) {
+                clearInterval(countdown);
+                timerDisplay.innerText = "Done!";
+                startButton.disabled = false; // Re-enable the button 
+                return;
+            }
+
+            updateDisplay(); 
+        }, 1000); 
+    });
+
+    updateDisplay(); 
+</script>

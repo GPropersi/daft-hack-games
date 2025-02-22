@@ -1,29 +1,89 @@
 :root {
-	--innerRed: rgba(203, 67, 53, 1.0);
-	--outerRed: rgba(203, 67, 53, 0.75);
-
+    --innerRed: rgba(203, 67, 53, 1.0);
+    --outerRed: rgba(203, 67, 53, 0.75);
+    --timerBackground: rgba(236, 81, 64, 0.75);
 }
 
 html,
 body {
-	display: flex;
-	flex-direction: row;
-	height: 100%;
-	width: 100%;
-	padding: 0px;
-	margin: 0px;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 .outer-panel {
-	background-color: var(--outerRed);
+    background-color: var(--outerRed);
 }
 
 .inner-panel {
-	background-color: var(--innerRed);
+    background-color: var(--innerRed);
 }
 
 .inner-panel,
 .outer-panel {
-	height: 100%;
-	width: calc(100% / 3);
+    height: 100%;
+    width: calc(100% / 3);
+}
+
+.main-box {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: none; 
+    border-radius: 8px;
+    text-align: center;
+    background-color: var(--outerRed); 
+}
+
+.timer-box {
+    padding: 15px; 
+    background-color: var(--timerBackground); 
+    margin-bottom: 20px;
+    border-radius: 8px; 
+}
+
+.timer {
+    font-size: 36px;
+    margin-bottom: 10px; 
+    color: white; 
+}
+
+#taskList {
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+    text-align: center; 
+}
+
+.toggle-btn, .task-btn {
+    padding: 10px 20px; 
+    background-color: var(--timerBackground);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: white;
+    border: none;
+    border-radius: 8px; 
+    cursor: pointer;
+    margin: 5px; 
+    transition: background-color 0.3s ease; 
+    width: calc(100% - 40px); /* Subtracts total margin from sides aka makes this thing even*/
+}
+
+.task-btn {
+    display: inline-block;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-btn:hover, .task-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+}
+
+.task-txt {
+    font-size: 20px; 
+    color: white; 
+    text-align: center; 
+    letter-spacing: 1px; 
+    border-radius: 8px; 
 }
