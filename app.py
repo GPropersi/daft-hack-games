@@ -1,7 +1,6 @@
 from flask import (Flask, render_template,
                    request, jsonify, abort)
 
-load_dotenv()
 app = Flask(__name__)
 
 @app.route('/')
