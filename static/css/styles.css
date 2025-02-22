@@ -1,0 +1,29 @@
+:root {
+	--innerRed: rgba(203, 67, 53, 1.0);
+	--outerRed: rgba(203, 67, 53, 0.75);
+
+}
+
+html,
+body {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+
+.outer-panel {
+	background-color: var(--outerRed);
+}
+
+.inner-panel {
+	background-color: var(--innerRed);
+}
+
+.inner-panel,
+.outer-panel {
+	height: 100%;
+	width: calc(100% / 3);
+}
