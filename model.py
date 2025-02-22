@@ -1,7 +1,7 @@
 from sqlalchemy import Integer, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.orm import DeclarativeBase
-from main import db
+from app import db
 
 class Users(db.Model):
     __tablename__ = "users"

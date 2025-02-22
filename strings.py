@@ -1,0 +1,7 @@
+STUDYING = "Studying"
+EXERCISING = "Exercising"
+READING = "Reading"
+COOKING = "Cooking"
+LEETCODE = "Leetcode"
+
+CATEGORIES = (STUDYING, EXERCISING, READING, COOKING, LEETCODE)
