@@ -13,12 +13,11 @@ class Users(db.Model):
 class UserStats(db.Model):
     __tablename__ = "user_stats"
     id: Mapped[int] = mapped_column(primary_key=True)
-    userId: Mapped[int] = mapped_column(ForeignKey("user.id"))
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     minutes: Mapped[int] = mapped_column(Integer)
     category: Mapped[int] = mapped_column(ForeignKey("category.id"))
 
-    user = relationship("User", back_populates="stats")
-    category = relationship("Category", back_populates="user_stats")
+    user = relationship("Users", back_populates="stats")
     
 
 class Category(db.Model):
@@ -26,5 +25,4 @@ class Category(db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String, unique=True)
 
-    user_stats = relationship("UserStats", back_populates="category")
     
