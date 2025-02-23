@@ -1,6 +1,6 @@
 from app import app, db
 from model import Users, UserStats, Category
-from strings import CATEGORIES
+from strings import CATEGORIES, USERS
 
 def add_categories():
 
@@ -12,7 +12,6 @@ def add_categories():
 
       db.session.add(category)
       db.session.commit()
-
 
 
 if __name__ == "__main__":
