@@ -3,17 +3,16 @@ from flask import (Flask, render_template,
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import os
+from db import db
+from model import Users
+
 
 load_dotenv()
 app = Flask(__name__)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("SQLALCHEMY_DATABASE_URI")
 
-db = SQLAlchemy()
-
 db.init_app(app)
-
-
 
 @app.route('/')
 def hello():
@@ -29,17 +28,12 @@ def user_tracking():
 
     return jsonify(response_data), 200
 
-@app.route('/user_login/', methods=['POST'])
+@app.route('/user_login', methods=['POST'])
 def user_login():
-    #TODO: If user not in database
-    """
-    if user not in database: abort(404)
-    """
-
-    response_data = {"status": "success"}
+    username = request.json.get("username", None)
+    user = db.one_or_404(db.select(Users).filter_by(username=username))
+    response_data = {"status": "success", "username": user.username}
     return jsonify(response_data), 200
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
